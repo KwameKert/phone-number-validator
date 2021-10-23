@@ -11,7 +11,7 @@ const routes: Routes = [
     redirectTo: AppRouteNames.Home,
   },
   {
-    path: `${AppRouteNames.Home}/:id/:id`,
+    path: `${AppRouteNames.Home}/:id/:id2`,
     component: ValidatorComponent,
   },
 ];

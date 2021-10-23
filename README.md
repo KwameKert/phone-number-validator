@@ -1,6 +1,6 @@
 # PhoneValidator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3. Demo of this project is available on [Netlify](https://phone-number-validator.netlify.app/phone-validator)
 
 ## Development server
 

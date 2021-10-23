@@ -11,6 +11,7 @@ import { ValidationResponse } from '../../models/validation.model';
 import { Country } from '../../models/country.model';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AppRouteNames } from 'src/app/shared/route-config';
 
 @Component({
   selector: 'app-validator',
@@ -43,6 +44,7 @@ export class ValidatorComponent implements OnInit {
     this.checkCountryChanges();
   }
 
+  //check if country code changes and validations
   checkCountryChanges(): void {
     this.validatorForm
       .get(['country_code'])!
@@ -56,6 +58,7 @@ export class ValidatorComponent implements OnInit {
       });
   }
 
+  //check if path exists and set the country code
   checkNumberValidityIfPathExists(): void {
     const countryCode = this.router.url.split('/')[2]?.toUpperCase();
     const phoneNumber = this.router.url.split('/')[3];
@@ -91,7 +94,9 @@ export class ValidatorComponent implements OnInit {
           );
           if (this.selectedCountry) {
             this.location.replaceState(
-              `${this.selectedCountry?.alpha2Code.toLowerCase()}/${
+              `${
+                AppRouteNames.Home
+              }/${this.selectedCountry?.alpha2Code.toLowerCase()}/${
                 this.validationResponseData.local_format
               }`
             );
@@ -109,6 +114,7 @@ export class ValidatorComponent implements OnInit {
     );
   }
 
+  //fetch all countries and filter supported countries
   fetchCountries(): void {
     this.isLoading = true;
     this.subscriptions.push(
@@ -136,6 +142,7 @@ export class ValidatorComponent implements OnInit {
     this.supportedCountries = this.searchCountry(event.target.value);
   }
 
+  //filter supported countries by filter name
   searchCountry(value: string): Country[] {
     const filter = value.toLowerCase();
     return this.supportedCountries!.filter((option) =>
@@ -143,6 +150,7 @@ export class ValidatorComponent implements OnInit {
     );
   }
 
+  //loop through all countries and filter supported countries and store in staticCountries
   getSupportedCountries(): void {
     const supportedCountryCodes = Object.keys(this.supportedCountriesObject);
     this.supportedCountries = this.allCountries?.filter((country) =>
