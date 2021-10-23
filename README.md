@@ -1,6 +1,6 @@
 # PhoneValidator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3. Demo of this project is available on [Netlify](https://phone-number-validator.netlify.app/phone-validator)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11 Demo of this project is available on [Netlify](https://phone-number-validator.netlify.app/phone-validator)
 
 ## Development server
 
@@ -16,4 +16,4 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Cypress].
+Run `ng e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/).
