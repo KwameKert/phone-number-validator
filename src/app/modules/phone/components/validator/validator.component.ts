@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -18,7 +18,7 @@ import { AppRouteNames } from 'src/app/shared/route-config';
   templateUrl: './validator.component.html',
   styleUrls: ['./validator.component.css'],
 })
-export class ValidatorComponent implements OnInit {
+export class ValidatorComponent implements OnInit, OnDestroy {
   title: String = 'Phone Number Validator';
   validatorForm: FormGroup = new FormGroup({});
   isLoading = false;
@@ -46,16 +46,18 @@ export class ValidatorComponent implements OnInit {
 
   //check if country code changes and validations
   checkCountryChanges(): void {
-    this.validatorForm
-      .get(['country_code'])!
-      .valueChanges.subscribe((value) => {
-        if (value) {
-          this.validatorForm.controls.number.addValidators([
-            Validators.maxLength(20),
-          ]);
-          this.validatorForm.controls.number.updateValueAndValidity();
-        }
-      });
+    this.subscriptions.push(
+      this.validatorForm
+        .get(['country_code'])!
+        .valueChanges.subscribe((value) => {
+          if (value) {
+            this.validatorForm.controls.number.addValidators([
+              Validators.maxLength(20),
+            ]);
+            this.validatorForm.controls.number.updateValueAndValidity();
+          }
+        })
+    );
   }
 
   //check if path exists and set the country code
@@ -158,5 +160,9 @@ export class ValidatorComponent implements OnInit {
     );
     this.staticCountries = this.supportedCountries;
     this.checkNumberValidityIfPathExists();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
