@@ -49,8 +49,7 @@ export class ValidatorComponent implements OnInit {
       .valueChanges.subscribe((value) => {
         if (value) {
           this.validatorForm.controls.number.addValidators([
-            Validators.maxLength(12),
-            Validators.minLength(7),
+            Validators.maxLength(20),
           ]);
           this.validatorForm.controls.number.updateValueAndValidity();
         }
@@ -73,8 +72,7 @@ export class ValidatorComponent implements OnInit {
       country_code: new FormControl(''),
       number: new FormControl('', [
         Validators.required,
-        Validators.minLength(9),
-        Validators.maxLength(17),
+        Validators.maxLength(20),
       ]),
     });
   }
