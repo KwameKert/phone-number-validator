@@ -1,0 +1,9 @@
+<div class="snackbar-container">
+  <mat-icon [ngClass]="[type]">{{ notificationIcons[type] }}</mat-icon>
+  <span class="flex items-center message text-white overflow-anywhere">{{
+    message
+  }}</span>
+  <button mat-icon-button (click)="closeSnackBar()">
+    <mat-icon>{{ icons.MaterialIcons.close }}</mat-icon>
+  </button>
+</div>

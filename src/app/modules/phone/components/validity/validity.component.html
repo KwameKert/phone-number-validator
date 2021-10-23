@@ -1,0 +1,33 @@
+<hr />
+<div class="container">
+  <div
+    class="row justify-content-center"
+    *ngIf="validityData?.valid"
+    id="valid-number"
+  >
+    <div class="col-md-4">
+      <img
+        [src]="country?.flags?.png"
+        [alt]="country?.name + 'flag'"
+        class="img-fluid img-thumbnail"
+      />
+    </div>
+
+    <div class="col-md-8 col-sm-12 px-1">
+      <p><b>Number: </b> {{ validityData?.number }}</p>
+      <p><b>Country: </b> {{ validityData?.country_name }}</p>
+      <p>
+        <b>International Format: </b> {{ validityData?.international_format }}
+      </p>
+      <p><b>Carrier : </b> {{ validityData?.carrier }}</p>
+      <p><b>Line Type : </b> {{ validityData?.line_type | titlecase }}</p>
+    </div>
+  </div>
+  <div
+    class="justify-content-center alert alert-danger"
+    id="invalid-number"
+    *ngIf="!validityData?.valid"
+  >
+    <b> Number is invalid.</b>
+  </div>
+</div>

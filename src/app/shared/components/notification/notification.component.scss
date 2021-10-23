@@ -1,0 +1,40 @@
+.snackbar-container {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.info {
+  color: blue;
+}
+
+.warn {
+  color: yellow;
+}
+
+.message {
+  width: 100%;
+  margin-left: 5%;
+  margin-top: 0.5%;
+}
+
+.tab-close {
+  font-weight: 300;
+  color: #2196f3;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.overflow-anywhere {
+  overflow-wrap: anywhere !important;
+}
